@@ -2,7 +2,7 @@
   "expo": {
     "name": "Working Time",
     "slug": "Working-Time",
-    "version": "1.0.2",
+    "version": "1.2.0",
     "orientation": "portrait",
     "icon": "./assets/images/clock.png",
     "scheme": "myapp",
@@ -18,7 +18,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/clock.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#4D0E8B"
       }
     },
     "web": {
@@ -34,3 +34,4 @@
     }
   }
 }
+

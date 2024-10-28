@@ -3,11 +3,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../styles/styles";
 import { StatusBar } from "expo-status-bar";
 
-export default function Time() {
+export default function Screen3() {
     return (
         <SafeAreaView style={styles.container}>
             <View>
-                <Text style={styles.text}>Screen 1</Text>
+                <Text style={styles.text}>Screen 3</Text>
             </View>
             <StatusBar style="auto" />
         </SafeAreaView>
