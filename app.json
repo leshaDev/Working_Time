@@ -10,12 +10,13 @@
     "splash": {
       "image": "./assets/images/hallo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "backgroundColor": "#000000",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/clock.png",
         "backgroundColor": "#4D0E8B"

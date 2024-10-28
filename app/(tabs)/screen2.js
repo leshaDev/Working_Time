@@ -1,6 +1,5 @@
 import { View, Text, Button, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { styles } from "../../styles/styles";
 import { StatusBar } from "expo-status-bar";
 import { Stack, useRouter } from "expo-router";
 import React, { useEffect } from "react";
@@ -36,3 +35,10 @@ export default function Screen2() {
         </SafeAreaView>
     );
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "black",
+    },
+    text: { color: "#ccc" },
+});
