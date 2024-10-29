@@ -1,9 +1,9 @@
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
-import { store } from "./../../redux/store";
+import { store } from "../redux/store";
 import { SQLiteProvider, useSQLiteContext } from "expo-sqlite";
-import { initializeDatabase } from "../../constants/db";
+import { initializeDatabase } from "../constants/db";
 
 const name1 = "screen1";
 const name2 = "screen2";
