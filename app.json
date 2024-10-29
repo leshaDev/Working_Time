@@ -20,7 +20,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/clock.png",
         "backgroundColor": "#4D0E8B"
-      }
+      },
+      "package": "com.lecha.WorkingTime"
     },
     "web": {
       "bundler": "metro",
@@ -32,7 +33,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "07b3da85-5509-46f0-810e-abddfe470e94"
+      }
     }
   }
 }
-

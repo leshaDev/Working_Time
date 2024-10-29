@@ -11,6 +11,11 @@ import { useSelector, useDispatch } from "react-redux";
 import ObjectInput from "../components/screen1/ObjectInput";
 import ModalDelete from "../components/screen1/ModalDelete";
 import { update_number_of_days } from "../redux/dataSlice";
+//import { SplashScreen } from "expo-splash-screen";
+import * as SplashScreen from "expo-splash-screen";
+
+// SplashScreen.preventAutoHideAsync(); // Запобігає автоматичному приховуванню сплеш-екрану
+SplashScreen.preventAutoHideAsync();
 
 const tableDate = "date";
 const tableTime = "settime";
@@ -26,6 +31,15 @@ const Content = () => {
 
     const number_of_days = useSelector((state) => state.data.number_of_days);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        const hideSplashScreen = async () => {
+            await new Promise((resolve) => setTimeout(resolve, 60000)); // Затримка на 10 секунд
+            SplashScreen.hideAsync(); // Приховує сплеш-екран
+        };
+
+        hideSplashScreen();
+    }, []);
 
     useEffect(() => {
         dispatch(update_number_of_days(!number_of_days));

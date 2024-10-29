@@ -22,7 +22,8 @@ export default function MainScreen2({ isFocused }) {
             // Сохраните текущую ориентацию
             const changeOrientation = async () => {
                 await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
-                //console.log("Orientation changed to LANDSCAPE");
+                console.log("Orientation changed to LANDSCAPE");
+                getDataJoin();
             };
 
             changeOrientation();
@@ -35,11 +36,11 @@ export default function MainScreen2({ isFocused }) {
         }, [])
     );
 
-    useEffect(() => {
-        if (isFocused) {
-            getDataJoin();
-        }
-    }, [isFocused]);
+    // useEffect(() => {
+    //     // if (isFocused) {
+    //     getDataJoin();
+    //     // }
+    // }, [isFocused]);
 
     //масив існуючих об'єктів
     const getObjects = (data) => {
