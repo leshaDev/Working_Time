@@ -2,22 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { Text, View, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator, Button } from "react-native";
 import { useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { SQLiteProvider, useSQLiteContext } from "expo-sqlite";
+import { useSQLiteContext } from "expo-sqlite";
 import { useSelector, useDispatch } from "react-redux";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { update_price } from "../../redux/dataSlice";
 import AnimatedInputPrice from "../../components/screen4/AnimatedInputPrise";
-import { Provider } from "react-redux";
-import { store } from "../../redux/store";
-
-const Content = () => {
-    return (
-        <Provider store={store}>
-            <SQLiteProvider databaseName="ex8.db">
-                <SettingsPrice />
-            </SQLiteProvider>
-        </Provider>
-    );
-};
 
 const SettingsPrice = () => {
     const db = useSQLiteContext();
@@ -61,7 +50,7 @@ const SettingsPrice = () => {
     };
 
     return (
-        <>
+        <SafeAreaView style={styles.container}>
             {!dataValue.length ? (
                 <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
                     <ActivityIndicator color="blue" size="large" />
@@ -97,7 +86,7 @@ const SettingsPrice = () => {
                     </View>
                 </View>
             )}
-        </>
+        </SafeAreaView>
     );
 };
 
@@ -144,16 +133,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Content;
-
-// export default function MoreDetails() {
-//     const router = useRouter();
-
-//     return (
-//         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-//             <Text style={{ fontSize: 24, marginBottom: 20 }}>Settings price</Text>
-//             <Text>This screen provides additional details about the Home section.</Text>
-//             <Button title="Go Back" onPress={() => router.back()} />
-//         </View>
-//     );
-// }
+export default SettingsPrice;

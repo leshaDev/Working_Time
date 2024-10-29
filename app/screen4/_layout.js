@@ -3,10 +3,10 @@ import { Stack } from "expo-router";
 
 export default function Screen4Layout() {
     return (
-        <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="settingsHours" options={{ headerShown: false }} />
-            <Stack.Screen name="settingsPrice" options={{ headerShown: false, tabBarStyle: { display: "none" } }} />
+        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "#000000" } }}>
+            <Stack.Screen name="index" />
+            <Stack.Screen name="settingsHours" />
+            <Stack.Screen name="settingsPrice" />
         </Stack>
     );
 }
