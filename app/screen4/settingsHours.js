@@ -107,7 +107,7 @@ const Content = ({ data, getData }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "black",
+        backgroundColor: "#000000",
     },
     text: {
         width: "100%",
