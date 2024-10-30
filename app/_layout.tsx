@@ -1,10 +1,6 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
-import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { Image } from "react-native";
-
+import { Stack } from "expo-router";
 import { Provider } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 import { SQLiteProvider, useSQLiteContext } from "expo-sqlite";
