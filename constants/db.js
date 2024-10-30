@@ -2,7 +2,7 @@ const tableDate = "date";
 const tableTime = "settime";
 const tableObject = "object";
 const tablePrice = "price";
-const numEl = 90;
+const numEl = 20;
 
 function insertArr() {
     for (var i = numEl, arr = []; i >= 0; i--) {

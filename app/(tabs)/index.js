@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { View, StyleSheet, Text, ScrollView, ActivityIndicator } from "react-native";
+import { View, StyleSheet, Text, ScrollView, ActivityIndicator, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { useSQLiteContext } from "expo-sqlite";
@@ -11,8 +11,6 @@ import { useSelector, useDispatch } from "react-redux";
 import ObjectInput from "../../components/screen1/ObjectInput";
 import ModalDelete from "../../components/screen1/ModalDelete";
 import { update_number_of_days } from "../../redux/dataSlice";
-import * as ScreenOrientation from "expo-screen-orientation";
-import { useFocusEffect } from "@react-navigation/native";
 
 const tableDate = "date";
 const tableTime = "settime";
@@ -22,13 +20,14 @@ const tablePrice = "price";
 const Content = () => {
     const db = useSQLiteContext();
     const [dataJoin, setDataJoin] = useState([]);
-    const [visibleDelete, setVisibleDelete] = useState(false);
     const pagerRef = useRef(null);
-    const idRef = useRef(null);
 
     const number_of_days = useSelector((state) => state.data.number_of_days);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        getDataJoin();
+    }, []);
     useEffect(() => {
         dispatch(update_number_of_days(!number_of_days));
     }, [dataJoin]);
@@ -38,12 +37,12 @@ const Content = () => {
             // const allRowsJoin = await db.getAllAsync(`SELECT  *
             // FROM date
             // INNER JOIN object ON object.id_parents = date.id;`);
-            // const allRowsDate = await db.getAllAsync(`SELECT * FROM ${tableDate}`);
-            // const allRowsObject = await db.getAllAsync(`SELECT * FROM ${tableObject}`);
-            const [allRowsDate, allRowsObject] = await Promise.all([
-                db.getAllAsync(`SELECT * FROM ${tableDate}`),
-                db.getAllAsync(`SELECT * FROM ${tableObject}`),
-            ]);
+            const allRowsDate = await db.getAllAsync(`SELECT * FROM ${tableDate}`);
+            const allRowsObject = await db.getAllAsync(`SELECT * FROM ${tableObject}`);
+            // const [allRowsDate, allRowsObject] = await Promise.all([
+            //     db.getAllAsync(`SELECT * FROM ${tableDate}`),
+            //     db.getAllAsync(`SELECT * FROM ${tableObject}`),
+            // ]);
             const data = allRowsDate.map((item) => {
                 const filtr = allRowsObject
                     .filter((f) => f.id_parents === item.id)
@@ -112,10 +111,6 @@ const Content = () => {
         }
     };
 
-    useEffect(() => {
-        getDataJoin();
-    }, []);
-
     const selectedDate = (date) => {
         const index = dataJoin.findIndex((item) => item.date === date);
         pagerRef.current.setPage(index);
@@ -126,7 +121,7 @@ const Content = () => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
-                {dataJoin.length === 0 ? (
+                {!dataJoin.length ? (
                     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
                         <ActivityIndicator color="blue" size="large" />
                         <Text>Loading...</Text>
@@ -137,35 +132,13 @@ const Content = () => {
                             <ScrollView key={index}>
                                 <View style={styles.page}>
                                     <View style={styles.iconsContent}>
-                                        <AntDesign
-                                            name="pluscircleo"
-                                            size={24}
-                                            color="blue"
-                                            onPress={() => {
-                                                addObject(el.id, "");
-                                            }}
-                                            style={styles.icon}
-                                        />
+                                        <TouchableOpacity onPress={() => addObject(el.id, "")}>
+                                            <AntDesign name="pluscircleo" size={24} color="blue" style={styles.icon} />
+                                        </TouchableOpacity>
 
                                         <SelectDate selectedDate={selectedDate} />
-                                        <AntDesign
-                                            name="minuscircleo"
-                                            size={24}
-                                            color="blue"
-                                            onPress={() => {
-                                                idRef.current = el.id;
-                                                console.log(el.id);
-                                                setVisibleDelete(true);
-                                            }}
-                                            style={styles.icon}
-                                        />
+                                        <Minus deleteObject={deleteObject} el={el.id} />
                                     </View>
-                                    <ModalDelete
-                                        deleteObject={deleteObject}
-                                        idObject={idRef.current}
-                                        setVisibleDelete={setVisibleDelete}
-                                        visibleDelete={visibleDelete}
-                                    />
 
                                     {new Date(el.date).toLocaleDateString() === new Date().toLocaleDateString() ? (
                                         <Text style={[styles.text, { color: "#ffffff" }]}>дисяй</Text>
@@ -196,6 +169,17 @@ const Content = () => {
     );
 };
 
+const Minus = ({ el, deleteObject }) => {
+    const [visibleDelete, setVisibleDelete] = useState(false);
+    return (
+        <>
+            <ModalDelete deleteObject={deleteObject} idObject={el} setVisibleDelete={setVisibleDelete} visibleDelete={visibleDelete} />
+            <TouchableOpacity onPress={() => setVisibleDelete(true)}>
+                <AntDesign name="minuscircleo" size={24} color="blue" style={styles.icon} />
+            </TouchableOpacity>
+        </>
+    );
+};
 const SelectDate = ({ selectedDate: selectedDate }) => {
     const [datePickerVisible, setDatePickerVisible] = useState(false);
     const showDatePicker = () => {
@@ -213,7 +197,9 @@ const SelectDate = ({ selectedDate: selectedDate }) => {
     };
     return (
         <>
-            <SimpleLineIcons name="magnifier" size={28} color="blue" style={styles.icon} onPress={showDatePicker} />
+            <TouchableOpacity onPress={showDatePicker}>
+                <SimpleLineIcons name="magnifier" size={28} color="blue" style={styles.icon} />
+            </TouchableOpacity>
             <DateTimePickerModal isVisible={datePickerVisible} mode="date" onConfirm={handleConfirm} onCancel={hideDatePicker} />
         </>
     );
@@ -236,6 +222,7 @@ const styles = StyleSheet.create({
     icon: {
         margin: 10,
         padding: 10,
+        //backgroundColor: "#ccc",
     },
     iconsContent: {
         flexDirection: "row",
