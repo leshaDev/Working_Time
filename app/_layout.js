@@ -22,7 +22,7 @@ export default function RootLayout() {
                     {loading ? (
                         <Image
                             source={require("../assets/images/hello.png")}
-                            style={{ resizeMode: "contain", backgroundColor: "#000", width: "100%", flex: 1 }}
+                            style={{ resizeMode: "contain", backgroundColor: "#000000", width: "100%", flex: 1 }}
                         />
                     ) : (
                         <Stack screenOptions={{ contentStyle: { backgroundColor: "#000000" }, headerShown: false }}>

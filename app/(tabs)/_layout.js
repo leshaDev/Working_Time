@@ -31,8 +31,9 @@ export default function TabsLayout() {
                 },
                 headerShown: false,
                 tabBarStyle: {
-                    backgroundColor: "black", // Цвет фона панели вкладок
+                    backgroundColor: "#000000", //"#14171c", // Цвет фона панели вкладок
                     borderTopWidth: 0, // Убрать границу сверху (если нужно)
+                    paddingBottom: 4,
                 },
                 contentStyle: { backgroundColor: "#000000" },
             })}

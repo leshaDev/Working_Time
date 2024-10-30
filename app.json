@@ -1,12 +1,12 @@
 {
     "expo": {
-        "name": "test",
+        "name": "Working Time",
         "slug": "test",
-        "version": "1.0.0",
+        "version": "1.3.0",
         "orientation": "portrait",
-        "icon": "./assets/images/icon.png",
+        "icon": "./assets/images/clock.png",
         "scheme": "myapp",
-        "userInterfaceStyle": "automatic",
+        "userInterfaceStyle": "dark",
         "splash": {
             "image": "./assets/images/hello.png",
             "resizeMode": "contain",
@@ -18,8 +18,8 @@
         "android": {
             "backgroundColor": "#000000",
             "adaptiveIcon": {
-                "foregroundImage": "./assets/images/adaptive-icon.png",
-                "backgroundColor": "#ffffff"
+                "foregroundImage": "./assets/images/clock.png",
+                "backgroundColor": "#476e4e"
             }
         },
         "web": {
