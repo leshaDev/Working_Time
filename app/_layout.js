@@ -6,6 +6,10 @@ import { SQLiteProvider, useSQLiteContext } from "expo-sqlite";
 import { store } from "../redux/store";
 import { initializeDatabase } from "../constants/db";
 
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
+
 const name1 = "index";
 const name2 = "screen2";
 const name3 = "screen3";

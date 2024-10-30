@@ -11,7 +11,7 @@ import { useSQLiteContext } from "expo-sqlite";
 const tableDate = "date";
 const tableObject = "object";
 
-export default function MainScreen2({ isFocused }) {
+export default function MainScreen2() {
     const db = useSQLiteContext();
     const [dataJoin, setDataJoin] = useState([]);
 

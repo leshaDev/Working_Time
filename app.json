@@ -1,43 +1,41 @@
 {
-  "expo": {
-    "name": "Working Time",
-    "slug": "Working-Time",
-    "version": "1.2.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/clock.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/hallo.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "backgroundColor": "#000000",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/clock.png",
-        "backgroundColor": "#4D0E8B"
-      },
-      "package": "com.lecha.WorkingTime"
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
-    "extra": {
-      "eas": {
-        "projectId": "07b3da85-5509-46f0-810e-abddfe470e94"
-      }
+    "expo": {
+        "name": "Working Time",
+        "slug": "Working-Time",
+        "version": "1.2.0",
+        "orientation": "portrait",
+        "icon": "./assets/images/clock.png",
+        "scheme": "myapp",
+        "userInterfaceStyle": "dark",
+        "splash": {
+            "image": "./assets/images/hallo.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#000000"
+        },
+        "ios": {
+            "supportsTablet": true
+        },
+        "android": {
+            "backgroundColor": "#000000",
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/images/clock.png",
+                "backgroundColor": "#4D0E8B"
+            },
+            "package": "com.lecha.WorkingTime"
+        },
+        "web": {
+            "bundler": "metro",
+            "output": "static",
+            "favicon": "./assets/images/favicon.png"
+        },
+        "plugins": ["expo-router"],
+        "experiments": {
+            "typedRoutes": true
+        },
+        "extra": {
+            "eas": {
+                "projectId": "07b3da85-5509-46f0-810e-abddfe470e94"
+            }
+        }
     }
-  }
 }

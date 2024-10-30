@@ -11,10 +11,11 @@ import { useSelector, useDispatch } from "react-redux";
 import ObjectInput from "../components/screen1/ObjectInput";
 import ModalDelete from "../components/screen1/ModalDelete";
 import { update_number_of_days } from "../redux/dataSlice";
+import * as ScreenOrientation from "expo-screen-orientation";
+import { useFocusEffect } from "@react-navigation/native";
 //import { SplashScreen } from "expo-splash-screen";
 import * as SplashScreen from "expo-splash-screen";
 
-// SplashScreen.preventAutoHideAsync(); // Запобігає автоматичному приховуванню сплеш-екрану
 SplashScreen.preventAutoHideAsync();
 
 const tableDate = "date";
@@ -32,10 +33,42 @@ const Content = () => {
     const number_of_days = useSelector((state) => state.data.number_of_days);
     const dispatch = useDispatch();
 
+    // SplashScreen.preventAutoHideAsync();
+
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //         // Сохраните текущую ориентацию
+    //         const changeOrientation = async () => {
+    //             await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    //             console.log("Orientation changed to LANDSCAPE");
+    //             getDataJoin();
+    //         };
+
+    //         changeOrientation();
+
+    //         // Возвращаем функцию для сброса ориентации при потере фокуса
+    //         return async () => {
+    //             await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    //             //console.log("Orientation changed back to PORTRAIT");
+    //         };
+    //     }, [])
+    // );
+
     useEffect(() => {
         const hideSplashScreen = async () => {
-            await new Promise((resolve) => setTimeout(resolve, 60000)); // Затримка на 10 секунд
+            await new Promise((resolve) => setTimeout(resolve, 10000)); // Затримка на 10 секунд
             SplashScreen.hideAsync(); // Приховує сплеш-екран
+            console.log(12345);
+        };
+
+        hideSplashScreen();
+    }, []);
+
+    useEffect(() => {
+        const hideSplashScreen = async () => {
+            await new Promise((resolve) => setTimeout(resolve, 10000)); // Затримка на 10 секунд
+            SplashScreen.hideAsync(); // Приховує сплеш-екран
+            console.log(12345);
         };
 
         hideSplashScreen();
