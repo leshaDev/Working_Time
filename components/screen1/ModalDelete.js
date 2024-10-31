@@ -16,7 +16,7 @@ export default ModalDelete = ({ deleteObject, idObject, visibleDelete, setVisibl
                     <Text style={styles.text}>Are you sure you want to delete ?</Text>
                     <View style={styles.viewButtons}>
                         <TouchableOpacity onPress={clickCancel}>
-                            <Text style={{ color: "#263FC0", fontSize: 16 }}>cancel</Text>
+                            <Text style={{ color: "#263FC0", fontSize: 16, padding: 5 }}>cancel</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => clickDelete()}>
                             <Text style={{ color: "#263FC0", fontSize: 16 }}>delete</Text>

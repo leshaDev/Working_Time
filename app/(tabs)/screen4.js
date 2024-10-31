@@ -59,12 +59,12 @@ const SettingMain = ({ navigation, route }) => {
     }, []);
 
     const onPressSettingsDay = () => {
-        router.push("/screen4/settingsHours");
+        router.push("../settingsHours");
     };
     const onPressSettingsPrice = () => {
         //deleteAll();
         //selectTable();
-        router.push("/screen4/settingsPrice");
+        router.push("../settingsPrice");
     };
     return (
         <SafeAreaView style={styles.container}>

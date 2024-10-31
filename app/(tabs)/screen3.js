@@ -4,8 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { useSQLiteContext } from "expo-sqlite";
 import { useSelector } from "react-redux";
-import AnimatedInput from "../components/screen3/AnimatedInput";
-import ModalSelect from "../components/screen3/ModalSelect";
+import AnimatedInput from "../../components/screen3/AnimatedInput";
+import ModalSelect from "../../components/screen3/ModalSelect";
 
 const tableDate = "date";
 const tableTime = "settime";

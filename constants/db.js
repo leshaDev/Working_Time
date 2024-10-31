@@ -2,7 +2,7 @@ const tableDate = "date";
 const tableTime = "settime";
 const tableObject = "object";
 const tablePrice = "price";
-const numEl = 30;
+const numEl = 20;
 
 function insertArr() {
     for (var i = numEl, arr = []; i >= 0; i--) {
@@ -25,27 +25,27 @@ export async function initializeDatabase(db) {
             CREATE TABLE IF NOT EXISTS ${tableDate} (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_parents INTEGER,
-                date date
+                date TEXT
              );
             CREATE TABLE IF NOT EXISTS ${tableTime} (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                year INT,
-                month STRING,
-                days INT
+                year INTEGER,
+                month TEXT,
+                days INTEGER
             );
              CREATE TABLE IF NOT EXISTS ${tablePrice} (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                time FLOAT,
-                overtime FLOAT,
-                weekend FLOAT
+                time REAL,
+                overtime REAL,
+                weekend REAL
             );
              CREATE TABLE IF NOT EXISTS ${tableObject} (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_parents INTEGER,
                 object TEXT,
                 time INT,
-                time1 DATETIME,
-                time2 DATETIME
+                time1 TEXT,
+                time2 TEXT
             );
                 ${insertArr()};
           COMMIT TRANSACTION;

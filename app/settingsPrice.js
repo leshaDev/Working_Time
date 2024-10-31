@@ -5,8 +5,8 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useSQLiteContext } from "expo-sqlite";
 import { useSelector, useDispatch } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { update_price } from "../../redux/dataSlice";
-import AnimatedInputPrice from "../../components/screen4/AnimatedInputPrise";
+import { update_price } from "../redux/dataSlice";
+import AnimatedInputPrice from "../components/screen4/AnimatedInputPrise";
 
 const SettingsPrice = () => {
     const db = useSQLiteContext();

@@ -5,8 +5,8 @@ import { useSQLiteContext } from "expo-sqlite";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { update_number_of_days } from "../../redux/dataSlice";
-import ModalYear from "../../components/screen4/ModalYear";
+import { update_number_of_days } from "../redux/dataSlice";
+import ModalYear from "../components/screen4/ModalYear";
 
 export default function SettingsDays() {
     const db = useSQLiteContext();

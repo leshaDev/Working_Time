@@ -8,7 +8,7 @@
         "scheme": "myapp",
         "userInterfaceStyle": "dark",
         "splash": {
-            "image": "./assets/images/hallo.png",
+            "image": "./assets/images/hello.png",
             "resizeMode": "contain",
             "backgroundColor": "#000000"
         },
@@ -19,7 +19,7 @@
             "backgroundColor": "#000000",
             "adaptiveIcon": {
                 "foregroundImage": "./assets/images/clock.png",
-                "backgroundColor": "#4D0E8B"
+                "backgroundColor": "#7f76b0"
             },
             "package": "com.lecha.WorkingTime"
         },
