@@ -7,10 +7,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { update_price } from "../redux/dataSlice";
 import AnimatedInputPrice from "../components/screen4/AnimatedInputPrise";
+import ModalSave from "../components/screen4/ModalSave";
 
 const SettingsPrice = () => {
     const db = useSQLiteContext();
     const [dataValue, setDataValue] = useState([]);
+    const [visibleSave, setVisibleSave] = useState(false);
 
     const router = useRouter();
 
@@ -32,12 +34,14 @@ const SettingsPrice = () => {
             await db.runAsync(`UPDATE price SET  time = ?, overtime = ?, weekend = ?  WHERE id = 1 `, array);
             await getData();
             dispatch(update_price(!restart_price));
+            setVisibleSave(false);
         } catch (error) {
             console.log("Error while updating object");
         }
     };
 
     const clickSave = () => {
+        setVisibleSave(true);
         updatePrice(dataValue);
     };
 
@@ -58,6 +62,7 @@ const SettingsPrice = () => {
                 </View>
             ) : (
                 <View style={styles.container}>
+                    <ModalSave visibleSave={visibleSave} />
                     <View style={styles.iconsContent}>
                         <Ionicons style={styles.icons} onPress={onPressBack} name="chevron-back" size={32} color="#ccc" />
                         <Text style={styles.text}>Настроить стоимость годин</Text>

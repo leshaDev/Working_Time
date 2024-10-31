@@ -2,12 +2,14 @@ import React, { useRef, useEffect, useState } from "react";
 import { Text, View, Modal, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { useSQLiteContext } from "expo-sqlite";
 import AnimatedModal from "./AnimatedModal";
+import ModalSave from "./ModalSave";
 
 const tableTime = "settime";
 
 const ModalYear = ({ data, visibleSelect, setVisibleSelect, getData }) => {
     const db = useSQLiteContext();
     const [arrayUpdate, setArrayUpdate] = useState([]);
+    const [visibleSave, setVisibleSave] = useState(false);
 
     const clickClose = () => {
         setArrayUpdate([]);
@@ -16,17 +18,19 @@ const ModalYear = ({ data, visibleSelect, setVisibleSelect, getData }) => {
 
     const updateObject = async (array) => {
         try {
-            await db.runAsync(`UPDATE ${tableTime} SET  days = ? WHERE month = ? AND year = ?`, array);
+            await array.forEach((item) => {
+                db.runAsync(`UPDATE ${tableTime} SET  days = ? WHERE month = ? AND year = ?`, item);
+            });
             await getData();
+            setVisibleSave(false);
         } catch (error) {
             console.log("Error while updating object");
         }
     };
 
     const save = () => {
-        arrayUpdate.forEach((item) => {
-            updateObject(item);
-        });
+        setVisibleSave(true);
+        updateObject(arrayUpdate);
     };
 
     const Selected = ({ year, month, days }) => {
@@ -43,6 +47,7 @@ const ModalYear = ({ data, visibleSelect, setVisibleSelect, getData }) => {
     return (
         <Modal transparent={true} visible={visibleSelect} onRequestClose={clickClose}>
             <View style={styles.container}>
+                <ModalSave visibleSave={visibleSave} />
                 <Text style={styles.textHeader}>{data.year}</Text>
                 <ScrollView style={styles.modalView}>
                     {data.month.map((item, index) => (
